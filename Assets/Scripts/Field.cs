@@ -4,11 +4,12 @@ using System.Collections;
 
 public class Field : MonoBehaviour
 {
-
+    private int[,] a;
     // Use this for initialization
     void Start()
     {
-        int[,] a = CreatField(9, 7, 15);
+        a = CreatField(7, 9, 15);
+
         string b = null;
         for (int i = 0; i < a.GetLength(0); i++)
         {
@@ -25,6 +26,17 @@ public class Field : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetButton("Fire1"))
+        {
+            for (int i = 0; i < a.GetLength(0); i++)
+            {
+                for (int j = 0; j < a.GetLength(1); j++)
+                {
+                    a[i, j] = -a[i, j];
+                }
+            }
+
+        }
 
     }
 
