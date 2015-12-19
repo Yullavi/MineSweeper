@@ -1,6 +1,5 @@
 ﻿using System;
 using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 
 public class Cube : MonoBehaviour
@@ -8,12 +7,20 @@ public class Cube : MonoBehaviour
     public int CoordX { get; private set; }
     public int CoordY { get; private set; }
     public int NumberCube { get; private set; }
-    public event Action<Cube> Open;
+    public event Action<Cube> Selected;
+    public Field Field;
+    public bool IsOpened { get; private set; }
+
+    public void Open()
+    {
+        IsOpened = true;
+        gameObject.transform.rotation = Quaternion.identity;
+    }
 
     public void OnMouseUp()
     {
-        gameObject.GetComponentInChildren<Text>().text = (-NumberCube).ToString();
-        Open(this);
+        gameObject.GetComponentInChildren<Text>().text = NumberCube.ToString();
+        Selected(this);
     }
 
     public void Init(int coordX, int coordY, int numberCube)
@@ -21,19 +28,7 @@ public class Cube : MonoBehaviour
         NumberCube = numberCube;
         CoordY = coordY;
         CoordX = coordX;
-        gameObject.name = "Cube" + " " + coordX + " " + coordY;
+        gameObject.name = "Cube" + " " + coordX + " " + coordY + " " + numberCube;
         gameObject.GetComponentInChildren<Text>().text = numberCube.ToString();
-    }
-
-    // Use this for initialization
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }
