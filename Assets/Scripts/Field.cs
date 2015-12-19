@@ -4,38 +4,71 @@ using System.Collections;
 
 public class Field : MonoBehaviour
 {
-    private int[,] a;
+    public Cube CubePrefab;
+    private int[,] ArrayField { get; set; }
+
+    public int IndexA { get; set; }
+    public int IndexB { get; set; }
+    public int BombeNumber { get; set; }
+    Cube[,] cube;
+
+
     // Use this for initialization
     void Start()
     {
-        a = CreatField(7, 9, 15);
+        
+        IndexA = 5;
+        IndexB = 9;
+        BombeNumber = 15;
+        ArrayField = CreatField(IndexA, IndexB, BombeNumber);
+        cube = new Cube[IndexB, IndexA];
 
-        string b = null;
-        for (int i = 0; i < a.GetLength(0); i++)
+        string textField = null;
+        for (int i = 0; i < ArrayField.GetLength(0); i++)
         {
-            for (int j = 0; j < a.GetLength(1); j++)
+            for (int j = 0; j < ArrayField.GetLength(1); j++)
             {
-                b = b + " " + a[i, j];
+                textField += " " + ArrayField[i, j];
             }
-            b += "\n";
+            textField += "\n";
 
         }
-        Debug.Log(b);
+        Debug.Log(textField);
+
+        var pos = Vector3.zero;
+        for (int i = 0; i < IndexB; i++)
+        {
+            for (int j = 0; j < IndexA; j++)
+            {
+                pos.x = (float)(i * 1.2);
+                pos.y = (float)(j * 1.2);
+
+                cube[i, j] = (Cube)Instantiate(CubePrefab, pos, CubePrefab.transform.rotation);
+                cube[i, j].Init(i, j, ArrayField[i, j]);
+                cube[i, j].Open += Field_Open;
+            }
+        }
+    }
+
+    private void Field_Open(Cube cube)
+    {
+        Debug.Log(cube.name);
+        cube.transform.rotation = Quaternion.identity;
     }
 
     // Update is called once per frame
     void Update()
     {
+
         if (Input.GetButton("Fire1"))
         {
-            for (int i = 0; i < a.GetLength(0); i++)
+            for (int i = 0; i < ArrayField.GetLength(0); i++)
             {
-                for (int j = 0; j < a.GetLength(1); j++)
+                for (int j = 0; j < ArrayField.GetLength(1); j++)
                 {
-                    a[i, j] = -a[i, j];
+                    ArrayField[i, j] = -ArrayField[i, j];
                 }
             }
-
         }
 
     }
