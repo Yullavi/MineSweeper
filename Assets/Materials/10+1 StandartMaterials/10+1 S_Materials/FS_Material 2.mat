@@ -1,0 +1,202 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: FS_Material 2
+  m_Shader: {fileID: 4800000, guid: e8ef6866ca8e90943a7525dedeef387a, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 5
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  m_SavedProperties:
+    serializedVersion: 2
+    m_TexEnvs:
+      data:
+        first:
+          name: _MainTex
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _BumpMap
+        second:
+          m_Texture: {fileID: 2800000, guid: 3f6bc80b3d57b2f418e2f3a2eabd78c8, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _NormalMap
+        second:
+          m_Texture: {fileID: 2800000, guid: 85e61b0a9c31f2243b142900757d49aa, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _DecalTex
+        second:
+          m_Texture: {fileID: 2800000, guid: 6dae30f2eea1ed248ba776e405316c58, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _ColorControlCube
+        second:
+          m_Texture: {fileID: 8900000, guid: e27a4ffa516eac54899863b04924d33c, type: 2}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _ColorControl
+        second:
+          m_Texture: {fileID: 2800000, guid: 1167c0a28d11119930004d8a4241aa39, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Illum
+        second:
+          m_Texture: {fileID: 2800000, guid: a53cf5449d11a15d1100a04b44295342, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: color_map
+        second:
+          m_Texture: {fileID: 2800000, guid: ea0ab1bb2348db842ae73a6f9e3cb452, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: quad_depth_map
+        second:
+          m_Texture: {fileID: 2800000, guid: 276a5495f605e0d4796c5f97443b8e33, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: normal_map_x
+        second:
+          m_Texture: {fileID: 2800000, guid: fdad0de09e3cbaa4a9d9ed82ca8f095b, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: normal_map_y
+        second:
+          m_Texture: {fileID: 2800000, guid: fdad0de09e3cbaa4a9d9ed82ca8f095b, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Cube
+        second:
+          m_Texture: {fileID: 8900000, guid: e27a4ffa516eac54899863b04924d33c, type: 2}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _HeightMap
+        second:
+          m_Texture: {fileID: 2800000, guid: 6dae30f2eea1ed248ba776e405316c58, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+    m_Floats:
+      data:
+        first:
+          name: _Cutoff
+        second: 0
+      data:
+        first:
+          name: _Shininess
+        second: .742239952
+      data:
+        first:
+          name: _WaveScale
+        second: .150000006
+      data:
+        first:
+          name: _EmissionLM
+        second: -54.9000015
+      data:
+        first:
+          name: _AlphaX
+        second: 17.7199993
+      data:
+        first:
+          name: _AlphaY
+        second: 1
+      data:
+        first:
+          name: depth
+        second: .0799999982
+      data:
+        first:
+          name: tile
+        second: 2.99000001
+      data:
+        first:
+          name: shine
+        second: 1.27999997
+      data:
+        first:
+          name: _Tile
+        second: .829999983
+      data:
+        first:
+          name: _Height
+        second: -.349999994
+      data:
+        first:
+          name: _useAlpha
+        second: 1
+    m_Colors:
+      data:
+        first:
+          name: _Color
+        second: {r: 1, g: 1, b: 1, a: 0}
+      data:
+        first:
+          name: _SpecColor
+        second: {r: .204742834, g: .176654026, b: .388059676, a: 1}
+      data:
+        first:
+          name: _Emission
+        second: {r: .925373137, g: .64223659, b: .64223659, a: 0}
+      data:
+        first:
+          name: _horizonColor
+        second: {r: .318556488, g: .485074639, b: .469052255, a: 0}
+      data:
+        first:
+          name: WaveSpeed
+        second: {r: 19, g: 9, b: -16, a: -7}
+      data:
+        first:
+          name: ambient_color
+        second: {r: .626865685, g: .626865685, b: .626865685, a: 1}
+      data:
+        first:
+          name: diffuse_color
+        second: {r: 1, g: .99253732, b: .99253732, a: 1}
+      data:
+        first:
+          name: specular_color
+        second: {r: .179104507, g: .179104507, b: .179104507, a: 1}
+      data:
+        first:
+          name: lightpos
+        second: {r: 250.600006, g: -28.1000004, b: 67.0899963, a: -186}
+      data:
+        first:
+          name: _ColorTint
+        second: {r: 1, g: 1, b: 1, a: 1}
+      data:
+        first:
+          name: _FogColor
+        second: {r: .276119411, g: .135999113, b: .135999113, a: 1}

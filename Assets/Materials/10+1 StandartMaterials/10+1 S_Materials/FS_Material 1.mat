@@ -1,0 +1,226 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: FS_Material 1
+  m_Shader: {fileID: 36, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 5
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  m_SavedProperties:
+    serializedVersion: 2
+    m_TexEnvs:
+      data:
+        first:
+          name: _MainTex
+        second:
+          m_Texture: {fileID: 2800000, guid: e80f2210006e26b468ada80d27655197, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _BumpMap
+        second:
+          m_Texture: {fileID: 2800000, guid: 78e1041470f881144b95cb18be05b7a0, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _DecalTex
+        second:
+          m_Texture: {fileID: 2800000, guid: 362299a0d79c56140b63d1485fa75c84, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _ParallaxMap
+        second:
+          m_Texture: {fileID: 2800000, guid: e80f2210006e26b468ada80d27655197, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: color_map
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: quad_depth_map
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: normal_map_x
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: normal_map_y
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _FrontTex
+        second:
+          m_Texture: {fileID: 2800000, guid: 2cef9a9327e5f7a4fbf3edddf680ea7e, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _BackTex
+        second:
+          m_Texture: {fileID: 2800000, guid: e80f2210006e26b468ada80d27655197, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _LeftTex
+        second:
+          m_Texture: {fileID: 2800000, guid: e80f2210006e26b468ada80d27655197, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _RightTex
+        second:
+          m_Texture: {fileID: 2800000, guid: ec04dea737b53f549abcc417701ef717, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _UpTex
+        second:
+          m_Texture: {fileID: 2800000, guid: 2cef9a9327e5f7a4fbf3edddf680ea7e, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _DownTex
+        second:
+          m_Texture: {fileID: 2800000, guid: e80f2210006e26b468ada80d27655197, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _heightTex
+        second:
+          m_Texture: {fileID: 2800000, guid: 7be1832ed49207b4699488eef79b2f28, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _mainTex
+        second:
+          m_Texture: {fileID: 2800000, guid: d9384b9da235d9a4c91adfbb0a15603f, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _NoiseTex
+        second:
+          m_Texture: {fileID: 2800000, guid: e80f2210006e26b468ada80d27655197, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+    m_Floats:
+      data:
+        first:
+          name: _Shininess
+        second: .0467053205
+      data:
+        first:
+          name: _Parallax
+        second: .0401492529
+      data:
+        first:
+          name: _InvFade
+        second: 1
+      data:
+        first:
+          name: depth
+        second: .100000001
+      data:
+        first:
+          name: tile
+        second: 1
+      data:
+        first:
+          name: shine
+        second: 128
+      data:
+        first:
+          name: _ambientMul
+        second: 18.3500004
+      data:
+        first:
+          name: _tileX
+        second: 1
+      data:
+        first:
+          name: _tileY
+        second: 1
+      data:
+        first:
+          name: _offsetX
+        second: 1
+      data:
+        first:
+          name: _offsetY
+        second: 1
+      data:
+        first:
+          name: _scale
+        second: 1
+      data:
+        first:
+          name: _bias
+        second: 1
+      data:
+        first:
+          name: _FurLength
+        second: 6.13000011
+      data:
+        first:
+          name: _FurDarkening
+        second: 9.06999969
+    m_Colors:
+      data:
+        first:
+          name: _Color
+        second: {r: 1, g: 1, b: 1, a: 1}
+      data:
+        first:
+          name: _SpecColor
+        second: {r: .268656731, g: .324913949, b: 1, a: 1}
+      data:
+        first:
+          name: ambient_color
+        second: {r: .200000003, g: .200000003, b: .200000003, a: 1}
+      data:
+        first:
+          name: diffuse_color
+        second: {r: 1, g: 1, b: 1, a: 1}
+      data:
+        first:
+          name: specular_color
+        second: {r: .75, g: .75, b: .75, a: 1}
+      data:
+        first:
+          name: lightpos
+        second: {r: 100, g: -50, b: 50, a: 1}
+      data:
+        first:
+          name: _color
+        second: {r: .76119405, g: .76119405, b: .76119405, a: 1}
