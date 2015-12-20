@@ -13,13 +13,15 @@ public class Field : MonoBehaviour
     public int IndexB = 9;
     public int BombeNumber = 7;
     Cube[,] _cube;
+    public Camera Camera;
 
     // Use this for initialization
     void Start()
     {
-
         ArrayField = CreatField(IndexA, IndexB, BombeNumber);
         _cube = new Cube[IndexB, IndexA];
+
+        CameraPosition();
 
         string textField = null;
         for (int i = 0; i < ArrayField.GetLength(0); i++)
@@ -47,6 +49,18 @@ public class Field : MonoBehaviour
                 _cube[i, j].SelectedRight += FieldSelectedRight;
             }
         }
+    }
+
+    private void CameraPosition()
+    {
+        var posCamera = Camera.transform.position;
+        posCamera.x = (float)((IndexB * 1.2 -1) / 2);
+        posCamera.y = (float)((IndexA * 1.2 -1) / 2);
+        if (IndexA >= 6 || IndexB >= 10) posCamera.z = -11;
+        if (IndexA >= 8 || IndexB >= 14) posCamera.z = -12;
+        if (IndexA >= 10 || IndexB >= 18) posCamera.z = -14;
+        if (IndexA >= 13 || IndexB >= 22) posCamera.z = -16;
+        Camera.transform.position = posCamera;
     }
 
     private void FieldSelectedRight(Cube cube)
@@ -148,12 +162,12 @@ public class Field : MonoBehaviour
         {
             c.Destroyer();
         }
-       
-        
-/*        foreach (var c in GetNeighbors(cube))
-        {
-            DestroyCloseField(c);
-        }*/
+
+
+        /*        foreach (var c in GetNeighbors(cube))
+                {
+                    DestroyCloseField(c);
+                }*/
     }
 
     // Update is called once per frame

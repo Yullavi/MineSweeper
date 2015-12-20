@@ -173,9 +173,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CubePrefab: {fileID: 11437302, guid: fe57b0c69c4d835418902c79d7c1fba4, type: 2}
-  IndexA: 10
-  IndexB: 15
+  IndexA: 7
+  IndexB: 10
   BombeNumber: 15
+  Camera: {fileID: 2130731293}
 --- !u!4 &1865153339
 Transform:
   m_ObjectHideFlags: 0
