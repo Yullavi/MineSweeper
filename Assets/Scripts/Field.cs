@@ -14,12 +14,52 @@ public class Field : MonoBehaviour
     public int BombeNumber = 7;
     Cube[,] _cube;
 
+    // Use this for initialization
+    void Start()
+    {
+
+        ArrayField = CreatField(IndexA, IndexB, BombeNumber);
+        _cube = new Cube[IndexB, IndexA];
+
+        string textField = null;
+        for (int i = 0; i < ArrayField.GetLength(0); i++)
+        {
+            for (int j = 0; j < ArrayField.GetLength(1); j++)
+            {
+                textField += " " + ArrayField[i, j];
+            }
+            textField += "\n";
+
+        }
+        Debug.Log(textField);
+
+        var pos = Vector3.zero;
+        for (int i = 0; i < IndexB; i++)
+        {
+            for (int j = 0; j < IndexA; j++)
+            {
+                pos.x = (float)(i * 1.2);
+                pos.y = (float)(j * 1.2);
+
+                _cube[i, j] = (Cube)Instantiate(CubePrefab, pos, CubePrefab.transform.rotation);
+                _cube[i, j].Init(i, j, ArrayField[i, j]);
+                _cube[i, j].SelectedLeft += FieldSelectedLeft;
+                _cube[i, j].SelectedRight += FieldSelectedRight;
+            }
+        }
+    }
+
+    private void FieldSelectedRight(Cube cube)
+    {
+        cube.Block();
+    }
+
     private Cube[] GetNeighbors(Cube cube)
     {
         List<Cube> neighbors = new List<Cube>();
-        foreach (var coord in GetCoords(cube.CoordX,cube.CoordY))
+        foreach (var coord in GetCoords(cube.CoordX, cube.CoordY))
         {
-            neighbors.Add(_cube[coord.X,coord.Y]);
+            neighbors.Add(_cube[coord.X, coord.Y]);
         }
         return neighbors.ToArray();
     }
@@ -62,45 +102,18 @@ public class Field : MonoBehaviour
         return neighborsCoords.ToArray();
     }
 
-    // Use this for initialization
-    void Start()
-    {
-        ArrayField = CreatField(IndexA, IndexB, BombeNumber);
-        _cube = new Cube[IndexB, IndexA];
 
-        string textField = null;
-        for (int i = 0; i < ArrayField.GetLength(0); i++)
-        {
-            for (int j = 0; j < ArrayField.GetLength(1); j++)
-            {
-                textField += " " + ArrayField[i, j];
-            }
-            textField += "\n";
 
-        }
-        Debug.Log(textField);
-
-        var pos = Vector3.zero;
-        for (int i = 0; i < IndexB; i++)
-        {
-            for (int j = 0; j < IndexA; j++)
-            {
-                pos.x = (float)(i * 1.2);
-                pos.y = (float)(j * 1.2);
-
-                _cube[i, j] = (Cube)Instantiate(CubePrefab, pos, CubePrefab.transform.rotation);
-                _cube[i, j].Init(i, j, ArrayField[i, j]);
-                _cube[i, j].Selected += FieldSelected;
-            }
-        }
-    }
-
-    private void FieldSelected(Cube cube)
+    private void FieldSelectedLeft(Cube cube)
     {
         Debug.Log(cube.name);
         if (cube.NumberCube == 0)
         {
             OpenEmptyField(cube);
+        }
+        if (cube.NumberCube == 9)
+        {
+            DestroyCloseField(cube);
         }
         cube.Open();
 
@@ -125,20 +138,28 @@ public class Field : MonoBehaviour
             }
         }
     }
+    private void DestroyCloseField(Cube cube)
+    {
+        if (cube.IsOpened == true)
+        {
+            return;
+        }
+        foreach (var c in _cube)
+        {
+            c.Destroyer();
+        }
+       
+        
+/*        foreach (var c in GetNeighbors(cube))
+        {
+            DestroyCloseField(c);
+        }*/
+    }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButton("Fire1"))
-        {
-            for (int i = 0; i < ArrayField.GetLength(0); i++)
-            {
-                for (int j = 0; j < ArrayField.GetLength(1); j++)
-                {
-                    ArrayField[i, j] = -ArrayField[i, j];
-                }
-            }
-        }
+
     }
 
     private int[,] CreatField(int column, int row, int bombsNumber)
@@ -167,7 +188,7 @@ public class Field : MonoBehaviour
                 int count = 0;
                 if (newField[i, j] != 9)
                 {
-                    foreach (var coord in GetCoords(i,j))
+                    foreach (var coord in GetCoords(i, j))
                     {
                         if (newField[coord.X, coord.Y] == 9)
                             count++;
