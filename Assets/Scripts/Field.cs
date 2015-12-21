@@ -1,12 +1,15 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using Random = UnityEngine.Random;
 
 
 public class Field : MonoBehaviour
 {
     public Cube CubePrefab;
-
+    public Canvas CanvasPrefab;
+    private Canvas _canvas;
     private int[,] ArrayField { get; set; }
 
     public int IndexA = 5;
@@ -14,6 +17,7 @@ public class Field : MonoBehaviour
     public int BombeNumber = 7;
     Cube[,] _cube;
     public Camera Camera;
+    private int _countMarks = 0;
 
     // Use this for initialization
     void Start()
@@ -47,15 +51,33 @@ public class Field : MonoBehaviour
                 _cube[i, j].Init(i, j, ArrayField[i, j]);
                 _cube[i, j].SelectedLeft += FieldSelectedLeft;
                 _cube[i, j].SelectedRight += FieldSelectedRight;
+                _cube[i, j].RightMark += OnRightMark;
+                _cube[i, j].WrongMark += OnWrongMark;
             }
+        }
+    }
+
+    private void OnWrongMark(Cube cube)
+    {
+        if(cube.NumberCube == 9)
+        _countMarks--;
+    }
+
+    private void OnRightMark()
+    {
+        _countMarks++;
+        Debug.Log(_countMarks);
+        if (_countMarks == IndexA * IndexB)
+        {
+            Win();
         }
     }
 
     private void CameraPosition()
     {
         var posCamera = Camera.transform.position;
-        posCamera.x = (float)((IndexB * 1.2 -1) / 2);
-        posCamera.y = (float)((IndexA * 1.2 -1) / 2);
+        posCamera.x = (float)((IndexB * 1.2 - 1) / 2);
+        posCamera.y = (float)((IndexA * 1.2 - 1) / 2);
         if (IndexA >= 6 || IndexB >= 10) posCamera.z = -11;
         if (IndexA >= 8 || IndexB >= 14) posCamera.z = -12;
         if (IndexA >= 10 || IndexB >= 18) posCamera.z = -14;
@@ -174,6 +196,7 @@ public class Field : MonoBehaviour
     void Update()
     {
 
+
     }
 
     private int[,] CreatField(int column, int row, int bombsNumber)
@@ -212,6 +235,11 @@ public class Field : MonoBehaviour
             }
         }
         return newField;
+    }
+
+    private void Win()
+    {
+        _canvas = (Canvas)Instantiate(CanvasPrefab, CanvasPrefab.transform.position, CanvasPrefab.transform.rotation);
     }
 
     struct Coords

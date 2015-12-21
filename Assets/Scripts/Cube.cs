@@ -10,28 +10,36 @@ public class Cube : MonoBehaviour
     public int NumberCube { get; private set; }
     public event Action<Cube> SelectedLeft;
     public event Action<Cube> SelectedRight;
+    public event Action RightMark;
+    public event Action<Cube> WrongMark;
     public bool IsOpened { get; private set; }
     public bool IsBlocked { get; private set; }
 
 
     public void Open()
     {
-        if (!IsBlocked)
+        if (!IsBlocked&&!IsOpened)
         {
             IsOpened = true;
             if (NumberCube != 0)
             {
                 gameObject.transform.rotation = Quaternion.identity;
+                Debug.Log(name);
+                RightMark();
             }
             else
             {
                 var scale = transform.localScale;
-                scale.z = scale.z/5;
+                scale.z = scale.z / 5;
                 gameObject.transform.localScale = scale;
                 var pos = transform.position;
                 pos.z = 1;
                 gameObject.transform.position = pos;
+                Debug.Log(name);
+
+                RightMark();
             }
+
         }
     }
 
@@ -59,6 +67,7 @@ public class Cube : MonoBehaviour
         {
             gameObject.GetComponentInChildren<Text>().text = '\u2552'.ToString();
             gameObject.transform.rotation = Quaternion.identity;
+            if (NumberCube == 9) RightMark();
         }
         if (!IsBlocked)
         {
@@ -66,6 +75,7 @@ public class Cube : MonoBehaviour
             var rot = transform.rotation;
             rot.x = 180;
             gameObject.transform.rotation = rot;
+            WrongMark(this);
         }
     }
 
