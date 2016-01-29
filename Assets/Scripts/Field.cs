@@ -2,19 +2,22 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 
 public class Field : MonoBehaviour
 {
+    public Canvas NumberMinesLeavs;
     public Cube CubePrefab;
     public Canvas CanvasPrefab;
     private Canvas _canvas;
     private int[,] ArrayField { get; set; }
+    private int _numberMinesLeavs;
 
-    public int IndexA = 5;
-    public int IndexB = 9;
-    public int BombeNumber = 7;
+    public int IndexA = 16;
+    public int IndexB = 33;
+    public int BombeNumber = 99;
     Cube[,] _cube;
     public Camera Camera;
     private int _countMarks = 0;
@@ -52,21 +55,47 @@ public class Field : MonoBehaviour
                 _cube[i, j].SelectedLeft += FieldSelectedLeft;
                 _cube[i, j].SelectedRight += FieldSelectedRight;
                 _cube[i, j].RightMark += OnRightMark;
+                _cube[i, j].RightMarkInt += OnRightMarkInt;
                 _cube[i, j].WrongMark += OnWrongMark;
+                _cube[i, j].DeMark += OnDeMark;
             }
+        }
+        _numberMinesLeavs = BombeNumber;
+        NumberMinesLeavs.GetComponentInChildren<Text>().text =  _numberMinesLeavs.ToString();
+
+    }
+
+    private void OnRightMarkInt()
+    {
+        _countMarks++;
+
+        if (_countMarks == IndexA * IndexB)
+        {
+            Win();
         }
     }
 
-    private void OnWrongMark(Cube cube)
+    private void OnWrongMark()
+    {
+        _numberMinesLeavs--;
+        NumberMinesLeavs.GetComponentInChildren<Text>().text =  _numberMinesLeavs.ToString();
+    }
+
+    private void OnDeMark(Cube cube)
     {
         if(cube.NumberCube == 9)
         _countMarks--;
+        _numberMinesLeavs++;
+        NumberMinesLeavs.GetComponentInChildren<Text>().text =  _numberMinesLeavs.ToString();
+
     }
 
     private void OnRightMark()
     {
         _countMarks++;
-        Debug.Log(_countMarks);
+        _numberMinesLeavs--;
+        NumberMinesLeavs.GetComponentInChildren<Text>().text =  _numberMinesLeavs.ToString();
+
         if (_countMarks == IndexA * IndexB)
         {
             Win();
@@ -81,7 +110,7 @@ public class Field : MonoBehaviour
         if (IndexA >= 6 || IndexB >= 10) posCamera.z = -11;
         if (IndexA >= 8 || IndexB >= 14) posCamera.z = -12;
         if (IndexA >= 10 || IndexB >= 18) posCamera.z = -14;
-        if (IndexA >= 13 || IndexB >= 22) posCamera.z = -16;
+        if (IndexA >= 13 || IndexB >= 22) posCamera.z = -21;
         Camera.transform.position = posCamera;
     }
 

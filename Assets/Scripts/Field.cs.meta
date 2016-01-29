@@ -1,11 +1,14 @@
 fileFormatVersion: 2
 guid: 2aa77a07603f11646a579d33f2ba44dd
-timeCreated: 1450541573
+timeCreated: 1451651873
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
   defaultReferences:
+  - NumberMinesLeavs: {instanceID: 0}
   - CubePrefab: {fileID: 11437302, guid: fe57b0c69c4d835418902c79d7c1fba4, type: 2}
+  - CanvasPrefab: {fileID: 22317100, guid: 5704a414f35ac08458fafb6d2a791bcc, type: 2}
+  - Camera: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

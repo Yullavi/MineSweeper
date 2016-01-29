@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 9533f627dcad47f4aad517ab07dd9b02
+timeCreated: 1452793209
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - FieldPrefab: {fileID: 11498866, guid: fa16ca009aedfe34880c61ce15a59fa5, type: 2}
+  - StartButton: {instanceID: 0}
+  - SettingButton: {instanceID: 0}
+  - ListButton: {instanceID: 0}
+  - Exit: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
