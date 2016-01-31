@@ -52,4 +52,9 @@ public class Menu : MonoBehaviour
             BombeNumber = int.Parse(ExpertBombs.text);
         }
     }
+
+    public void Exit()
+    {
+        Application.Quit();
+    }
 }
