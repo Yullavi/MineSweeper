@@ -165,7 +165,7 @@ public class Field : MonoBehaviour
         {
             c.Destroyer();
         }
-        Instantiate(Explosion, transform.position, transform.rotation);
+        Instantiate(Explosion, Vector3.zero, transform.rotation);
 
         /*        foreach (var c in GetNeighbors(cube))
                 {
