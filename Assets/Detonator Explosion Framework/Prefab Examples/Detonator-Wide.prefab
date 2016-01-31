@@ -30,7 +30,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.62039185, y: 11.4451952, z: 35.3126678}
+  m_LocalPosition: {x: 5.620392, y: 11.445195, z: 35.312668}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -52,11 +52,11 @@ MonoBehaviour:
   on: 1
   detonatorControlled: 1
   startSize: 1
-  size: 2.26708102
-  explodeDelayMin: .132426396
-  explodeDelayMax: .149999991
+  size: 2.267081
+  explodeDelayMin: 0.1324264
+  explodeDelayMax: 0.14999999
   startDuration: 2
-  duration: .25
+  duration: 0.25
   timeScale: 1
   startDetail: 1
   detail: 1
@@ -89,17 +89,17 @@ MonoBehaviour:
   detonatorControlled: 1
   startSize: 1
   size: 1
-  explodeDelayMin: .144852787
-  explodeDelayMax: .162426382
+  explodeDelayMin: 0.14485279
+  explodeDelayMax: 0.16242638
   startDuration: 2
   duration: 3
   timeScale: 1
   startDetail: 1
   detail: 1
   startColor: {r: 1, g: 1, b: 1, a: 1}
-  color: {r: 1, g: .890758157, b: .492805779, a: .501960814}
+  color: {r: 1, g: 0.89075816, b: 0.49280578, a: 0.5019608}
   startLocalPosition: {x: 0, y: 0, z: 0}
-  localPosition: {x: 9.91976833, y: 0, z: 0}
+  localPosition: {x: 9.919768, y: 0, z: 0}
   startForce: {x: 0, y: 0, z: 0}
   force: {x: 0, y: 0, z: 0}
   startVelocity: {x: 0, y: 0, z: 0}
@@ -128,7 +128,7 @@ MonoBehaviour:
   on: 1
   detonatorControlled: 1
   startSize: 1
-  size: 1.28242612
+  size: 1.2824261
   explodeDelayMin: 0
   explodeDelayMax: 0
   startDuration: 2
@@ -137,7 +137,7 @@ MonoBehaviour:
   startDetail: 1
   detail: 1
   startColor: {r: 1, g: 1, b: 1, a: 1}
-  color: {r: .823076904, g: .56640631, b: .346402884, a: .501960814}
+  color: {r: 0.8230769, g: 0.5664063, b: 0.34640288, a: 0.5019608}
   startLocalPosition: {x: 0, y: 0, z: 0}
   localPosition: {x: 0, y: 0, z: 0}
   startForce: {x: 0, y: 0, z: 0}
@@ -169,17 +169,17 @@ MonoBehaviour:
   detonatorControlled: 1
   startSize: 1
   size: 1
-  explodeDelayMin: .0599999987
-  explodeDelayMax: .149999991
+  explodeDelayMin: 0.06
+  explodeDelayMax: 0.14999999
   startDuration: 2
   duration: 3
   timeScale: 1
   startDetail: 1
   detail: 1
   startColor: {r: 1, g: 1, b: 1, a: 1}
-  color: {r: 1, g: .819428086, b: .687050343, a: .501960814}
+  color: {r: 1, g: 0.8194281, b: 0.68705034, a: 0.5019608}
   startLocalPosition: {x: 0, y: 0, z: 0}
-  localPosition: {x: -10.1625853, y: 0, z: 0}
+  localPosition: {x: -10.162585, y: 0, z: 0}
   startForce: {x: 0, y: 0, z: 0}
   force: {x: 0, y: 0, z: 0}
   startVelocity: {x: 0, y: 0, z: 0}
@@ -206,7 +206,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   size: 8
-  color: {r: .915384591, g: .802721858, b: 0, a: .278431386}
+  color: {r: 0.9153846, g: 0.80272186, b: 0, a: 0.2784314}
   explodeOnStart: 1
   duration: 3
   detail: 1
@@ -214,13 +214,13 @@ MonoBehaviour:
   destroyTime: 7
   useWorldSpace: 1
   direction: {x: 0, y: 0, z: 0}
-  fireballAMaterial: {fileID: 0}
-  fireballBMaterial: {fileID: 0}
-  smokeAMaterial: {fileID: 0}
-  smokeBMaterial: {fileID: 0}
-  shockwaveMaterial: {fileID: 0}
-  sparksMaterial: {fileID: 0}
-  glowMaterial: {fileID: 0}
+  fireballAMaterial: {fileID: 2100000, guid: 3049dffabc5225d40b27675901977fdd, type: 2}
+  fireballBMaterial: {fileID: 2100000, guid: 02a46fb295082ed488cab61782ddc01f, type: 2}
+  smokeAMaterial: {fileID: 2100000, guid: f892253ab15f74115b6d10bd736b2e29, type: 2}
+  smokeBMaterial: {fileID: 2100000, guid: 36aa334bd0865ca459c9b3dfbbaf7198, type: 2}
+  shockwaveMaterial: {fileID: 2100000, guid: b4d8055067ce04d4c98367d69c10b358, type: 2}
+  sparksMaterial: {fileID: 2100000, guid: 35c8aea4fddc3f842bd829a8fd3d7e1c, type: 2}
+  glowMaterial: {fileID: 2100000, guid: b4d8055067ce04d4c98367d69c10b358, type: 2}
   heatwaveMaterial: {fileID: 0}
   autoCreateFireball: 1
   autoCreateSparks: 1
@@ -239,12 +239,39 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: fireballAMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 3049dffabc5225d40b27675901977fdd, type: 2}
+    - target: {fileID: 0}
+      propertyPath: fireballBMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 02a46fb295082ed488cab61782ddc01f, type: 2}
+    - target: {fileID: 0}
+      propertyPath: smokeAMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: f892253ab15f74115b6d10bd736b2e29, type: 2}
+    - target: {fileID: 0}
+      propertyPath: smokeBMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 36aa334bd0865ca459c9b3dfbbaf7198, type: 2}
+    - target: {fileID: 0}
+      propertyPath: shockwaveMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: b4d8055067ce04d4c98367d69c10b358, type: 2}
+    - target: {fileID: 0}
+      propertyPath: sparksMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 35c8aea4fddc3f842bd829a8fd3d7e1c, type: 2}
+    - target: {fileID: 0}
+      propertyPath: glowMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: b4d8055067ce04d4c98367d69c10b358, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 100000}
   m_IsPrefabParent: 1
-  m_IsExploded: 1
 --- !u!1002 &100100001
 EditorExtensionImpl:
   serializedVersion: 6
