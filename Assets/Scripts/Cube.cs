@@ -4,9 +4,8 @@ using UnityEngine.UI;
 
 public class Cube : MonoBehaviour
 {
-    public GameObject Explosion;
     public int CoordX { get; private set; }
-    public int CoordY { get; private set; }
+    public int CoordZ { get; private set; }
     public int NumberCube { get; private set; }
     public event Action<Cube> SelectedLeft;
     public event Action<Cube> SelectedRight;
@@ -20,25 +19,17 @@ public class Cube : MonoBehaviour
 
     public void Open()
     {
-        if (!IsBlocked&&!IsOpened)
+        if (!IsBlocked && !IsOpened)
         {
             IsOpened = true;
             if (NumberCube != 0)
             {
                 gameObject.transform.rotation = Quaternion.identity;
-                Debug.Log(name);
                 RightMarkInt();
             }
             else
             {
-                var scale = transform.localScale;
-                scale.z = scale.z / 5;
-                gameObject.transform.localScale = scale;
-                var pos = transform.position;
-                pos.z = 1;
-                gameObject.transform.position = pos;
-                Debug.Log(name);
-
+                transform.localScale = transform.localScale / 2;
                 RightMarkInt();
             }
 
@@ -53,12 +44,12 @@ public class Cube : MonoBehaviour
             SelectedRight(this);
     }
 
-    public void Init(int coordX, int coordY, int numberCube)
+    public void Init(int coordX, int coordZ, int numberCube)
     {
         NumberCube = numberCube;
-        CoordY = coordY;
+        CoordZ = coordZ;
         CoordX = coordX;
-        gameObject.name = "Cube" + " " + coordX + " " + coordY + " " + numberCube;
+        gameObject.name = "Cube" + " " + coordX + " " + coordZ + " " + numberCube;
         gameObject.GetComponentInChildren<Text>().text = numberCube.ToString();
     }
 
@@ -87,10 +78,7 @@ public class Cube : MonoBehaviour
 
     public void Destroyer()
     {
-        if (!IsBlocked)
-        {
+        if (this)
             Destroy(gameObject);
-            Instantiate(Explosion, transform.position, transform.rotation);
-        }
     }
 }

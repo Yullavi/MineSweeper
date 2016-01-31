@@ -8,16 +8,18 @@ using Random = UnityEngine.Random;
 
 public class Field : MonoBehaviour
 {
+    public Menu Menu;
     public Canvas NumberMinesLeavs;
     public Cube CubePrefab;
     public Canvas CanvasPrefab;
     private Canvas _canvas;
     private int[,] ArrayField { get; set; }
     private int _numberMinesLeavs;
+    public GameObject Explosion;
 
-    public int IndexA = 16;
-    public int IndexB = 33;
-    public int BombeNumber = 99;
+    private int IndexA;
+    private int IndexB;
+    private int BombeNumber;
     Cube[,] _cube;
     public Camera Camera;
     private int _countMarks = 0;
@@ -25,44 +27,7 @@ public class Field : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        ArrayField = CreatField(IndexA, IndexB, BombeNumber);
-        _cube = new Cube[IndexB, IndexA];
-
-        CameraPosition();
-
-        string textField = null;
-        for (int i = 0; i < ArrayField.GetLength(0); i++)
-        {
-            for (int j = 0; j < ArrayField.GetLength(1); j++)
-            {
-                textField += " " + ArrayField[i, j];
-            }
-            textField += "\n";
-
-        }
-        Debug.Log(textField);
-
-        var pos = Vector3.zero;
-        for (int i = 0; i < IndexB; i++)
-        {
-            for (int j = 0; j < IndexA; j++)
-            {
-                pos.x = (float)(i * 1.2);
-                pos.y = (float)(j * 1.2);
-
-                _cube[i, j] = (Cube)Instantiate(CubePrefab, pos, CubePrefab.transform.rotation);
-                _cube[i, j].Init(i, j, ArrayField[i, j]);
-                _cube[i, j].SelectedLeft += FieldSelectedLeft;
-                _cube[i, j].SelectedRight += FieldSelectedRight;
-                _cube[i, j].RightMark += OnRightMark;
-                _cube[i, j].RightMarkInt += OnRightMarkInt;
-                _cube[i, j].WrongMark += OnWrongMark;
-                _cube[i, j].DeMark += OnDeMark;
-            }
-        }
-        _numberMinesLeavs = BombeNumber;
-        NumberMinesLeavs.GetComponentInChildren<Text>().text =  _numberMinesLeavs.ToString();
-
+        FieldInit();
     }
 
     private void OnRightMarkInt()
@@ -78,15 +43,15 @@ public class Field : MonoBehaviour
     private void OnWrongMark()
     {
         _numberMinesLeavs--;
-        NumberMinesLeavs.GetComponentInChildren<Text>().text =  _numberMinesLeavs.ToString();
+        NumberMinesLeavs.GetComponentInChildren<Text>().text = _numberMinesLeavs.ToString();
     }
 
     private void OnDeMark(Cube cube)
     {
-        if(cube.NumberCube == 9)
-        _countMarks--;
+        if (cube.NumberCube == 9)
+            _countMarks--;
         _numberMinesLeavs++;
-        NumberMinesLeavs.GetComponentInChildren<Text>().text =  _numberMinesLeavs.ToString();
+        NumberMinesLeavs.GetComponentInChildren<Text>().text = _numberMinesLeavs.ToString();
 
     }
 
@@ -94,24 +59,12 @@ public class Field : MonoBehaviour
     {
         _countMarks++;
         _numberMinesLeavs--;
-        NumberMinesLeavs.GetComponentInChildren<Text>().text =  _numberMinesLeavs.ToString();
+        NumberMinesLeavs.GetComponentInChildren<Text>().text = _numberMinesLeavs.ToString();
 
         if (_countMarks == IndexA * IndexB)
         {
             Win();
         }
-    }
-
-    private void CameraPosition()
-    {
-        var posCamera = Camera.transform.position;
-        posCamera.x = (float)((IndexB * 1.2 - 1) / 2);
-        posCamera.y = (float)((IndexA * 1.2 - 1) / 2);
-        if (IndexA >= 6 || IndexB >= 10) posCamera.z = -11;
-        if (IndexA >= 8 || IndexB >= 14) posCamera.z = -12;
-        if (IndexA >= 10 || IndexB >= 18) posCamera.z = -14;
-        if (IndexA >= 13 || IndexB >= 22) posCamera.z = -21;
-        Camera.transform.position = posCamera;
     }
 
     private void FieldSelectedRight(Cube cube)
@@ -122,9 +75,9 @@ public class Field : MonoBehaviour
     private Cube[] GetNeighbors(Cube cube)
     {
         List<Cube> neighbors = new List<Cube>();
-        foreach (var coord in GetCoords(cube.CoordX, cube.CoordY))
+        foreach (var coord in GetCoords(cube.CoordX, cube.CoordZ))
         {
-            neighbors.Add(_cube[coord.X, coord.Y]);
+            neighbors.Add(_cube[coord.X, coord.Z]);
         }
         return neighbors.ToArray();
     }
@@ -171,7 +124,6 @@ public class Field : MonoBehaviour
 
     private void FieldSelectedLeft(Cube cube)
     {
-        Debug.Log(cube.name);
         if (cube.NumberCube == 0)
         {
             OpenEmptyField(cube);
@@ -213,7 +165,7 @@ public class Field : MonoBehaviour
         {
             c.Destroyer();
         }
-
+        Instantiate(Explosion, transform.position, transform.rotation);
 
         /*        foreach (var c in GetNeighbors(cube))
                 {
@@ -256,7 +208,7 @@ public class Field : MonoBehaviour
                 {
                     foreach (var coord in GetCoords(i, j))
                     {
-                        if (newField[coord.X, coord.Y] == 9)
+                        if (newField[coord.X, coord.Z] == 9)
                             count++;
                     }
                     newField[i, j] = count;
@@ -264,6 +216,55 @@ public class Field : MonoBehaviour
             }
         }
         return newField;
+    }
+
+    private void FieldInit()
+    {
+        IndexA = Menu.IndexA;
+        IndexB = Menu.IndexB;
+        BombeNumber = Menu.BombeNumber;
+        ArrayField = CreatField(IndexA, IndexB, BombeNumber);
+        _cube = new Cube[IndexB, IndexA];
+
+        string textField = null;
+        for (int i = 0; i < ArrayField.GetLength(0); i++)
+        {
+            for (int j = 0; j < ArrayField.GetLength(1); j++)
+            {
+                textField += " " + ArrayField[i, j];
+            }
+            textField += "\n";
+
+        }
+
+        var pos = Vector3.zero;
+        for (int i = 0; i < IndexB; i++)
+        {
+            for (int j = 0; j < IndexA; j++)
+            {
+                pos.x = (float)((i - IndexB / 2) * 1.2);
+                pos.z = (float)((j - IndexA / 2) * 1.2);
+
+                _cube[i, j] = (Cube)Instantiate(CubePrefab, pos, CubePrefab.transform.rotation);
+                _cube[i, j].Init(i, j, ArrayField[i, j]);
+                _cube[i, j].SelectedLeft += FieldSelectedLeft;
+                _cube[i, j].SelectedRight += FieldSelectedRight;
+                _cube[i, j].RightMark += OnRightMark;
+                _cube[i, j].RightMarkInt += OnRightMarkInt;
+                _cube[i, j].WrongMark += OnWrongMark;
+                _cube[i, j].DeMark += OnDeMark;
+            }
+        }
+        _numberMinesLeavs = BombeNumber;
+        NumberMinesLeavs.GetComponentInChildren<Text>().text = _numberMinesLeavs.ToString();
+    }
+    public void RestartOnClick()
+    {
+        foreach (var cube in _cube)
+        {
+            cube.Destroyer();
+        }
+        FieldInit();
     }
 
     private void Win()
@@ -274,12 +275,12 @@ public class Field : MonoBehaviour
     struct Coords
     {
         public int X;
-        public int Y;
+        public int Z;
 
         public Coords(int x, int y)
         {
             X = x;
-            Y = y;
+            Z = y;
         }
     }
 }
