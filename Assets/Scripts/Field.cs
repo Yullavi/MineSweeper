@@ -14,7 +14,7 @@ public class Field : MonoBehaviour
     public Canvas CanvasPrefab;
     private Canvas _canvas;
     private int[,] ArrayField { get; set; }
-    private int _numberMinesLeavs;
+    private int _numberMinesRemained;
     public GameObject Explosion;
 
     private int IndexA;
@@ -42,24 +42,24 @@ public class Field : MonoBehaviour
 
     private void OnWrongMark()
     {
-        _numberMinesLeavs--;
-        NumberMinesLeavs.GetComponentInChildren<Text>().text = _numberMinesLeavs.ToString();
+        _numberMinesRemained--;
+        NumberMinesLeavs.GetComponentInChildren<Text>().text = _numberMinesRemained.ToString();
     }
 
     private void OnDeMark(Cube cube)
     {
         if (cube.NumberCube == 9)
             _countMarks--;
-        _numberMinesLeavs++;
-        NumberMinesLeavs.GetComponentInChildren<Text>().text = _numberMinesLeavs.ToString();
+        _numberMinesRemained++;
+        NumberMinesLeavs.GetComponentInChildren<Text>().text = _numberMinesRemained.ToString();
 
     }
 
     private void OnRightMark()
     {
         _countMarks++;
-        _numberMinesLeavs--;
-        NumberMinesLeavs.GetComponentInChildren<Text>().text = _numberMinesLeavs.ToString();
+        _numberMinesRemained--;
+        NumberMinesLeavs.GetComponentInChildren<Text>().text = _numberMinesRemained.ToString();
 
         if (_countMarks == IndexA * IndexB)
         {
@@ -69,6 +69,7 @@ public class Field : MonoBehaviour
 
     private void FieldSelectedRight(Cube cube)
     {
+        if(!cube.IsOpened)
         cube.Block();
     }
 
@@ -255,8 +256,8 @@ public class Field : MonoBehaviour
                 _cube[i, j].DeMark += OnDeMark;
             }
         }
-        _numberMinesLeavs = BombeNumber;
-        NumberMinesLeavs.GetComponentInChildren<Text>().text = _numberMinesLeavs.ToString();
+        _numberMinesRemained = BombeNumber;
+        NumberMinesLeavs.GetComponentInChildren<Text>().text = _numberMinesRemained.ToString();
     }
     public void RestartOnClick()
     {

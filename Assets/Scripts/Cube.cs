@@ -61,7 +61,9 @@ public class Cube : MonoBehaviour
         if (IsBlocked)
         {
             gameObject.GetComponentInChildren<Text>().enabled = false;
+            gameObject.GetComponentInChildren<SpriteRenderer>().enabled = true;
             gameObject.transform.rotation = Quaternion.identity;
+
             if (NumberCube == 9) RightMark();
             else
             {
@@ -72,6 +74,7 @@ public class Cube : MonoBehaviour
         {
             gameObject.GetComponentInChildren<Text>().text = NumberCube.ToString();
             gameObject.GetComponentInChildren<SpriteRenderer>().enabled = false;
+            gameObject.GetComponentInChildren<Text>().enabled = true;
             var rot = transform.rotation;
             rot.x = 180;
             gameObject.transform.rotation = rot;
