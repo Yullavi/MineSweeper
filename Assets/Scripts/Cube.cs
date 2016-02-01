@@ -87,4 +87,15 @@ public class Cube : MonoBehaviour
         if (this)
             Destroy(gameObject);
     }
+    public void EnableTrue()
+    {
+        if (!this.enabled)
+            this.enabled = true;
+    }
+
+public void EnableFalse()
+    {
+            this.enabled = false;
+    }
+
 }

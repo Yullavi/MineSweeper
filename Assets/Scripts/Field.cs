@@ -268,6 +268,14 @@ public class Field : MonoBehaviour
         FieldInit();
     }
 
+    public void MenuOnClick()
+    {
+        foreach (var cube in _cube)
+        {
+            cube.EnableFalse();
+        }
+    }
+
     private void Win()
     {
         _canvas = (Canvas)Instantiate(CanvasPrefab, CanvasPrefab.transform.position, CanvasPrefab.transform.rotation);
